@@ -66,5 +66,4 @@ def login(request):
         else:
             return rejected_login()
     except BaseException as a:
-        print(a)
         return bad_request()
