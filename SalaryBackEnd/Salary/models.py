@@ -4,6 +4,10 @@ from django.db import models
 from django.utils import timezone
 from django.utils.datetime_safe import datetime
 
+from Salary.utils.authUtils import generateAuthToken
+from Salary.utils.http_responses import *
+from Salary.utils.network import get_client_ip
+
 
 class BaseModel(models.Model):
     creation_time = models.DateTimeField(auto_now_add=True, db_column="TimeCreated")
@@ -33,6 +37,45 @@ class Admins(BaseModel):
 
     class Meta:
         db_table = "Admin"
+
+    def updateLastSeenActivity(self, request):
+        from django.urls import resolve
+        routeName = resolve(request.path_info).url_name
+        requestBody = None
+        try:
+            requestBody = request.body
+        except:
+            requestBody = ""
+
+        self.lastActivity = json.dumps({
+            "LastCalledApi": routeName,
+            "RequestMethod": request.method,
+            # "RequestBody": str(requestBody),
+            "RequestDevice": request.META['HTTP_USER_AGENT'],
+            "RequestIP": get_client_ip(request)
+        })
+        request.messageBody = requestBody
+        self.lastSeen = datetime.today()
+        self.save()
+
+    def login(self, request):
+        messageAR = "تم تسجيل الدخول بنجاح"
+        messageEN = "Successful Login"
+        if self.is_active and not self.is_suspended and not self.is_deleted:
+            self.updateLastSeenActivity(request)
+            token = generateAuthToken(self)
+            return base_response(BaseHttpResponse(200, messageEN, messageAR, {"Token": token}))
+
+        elif not self.is_active:
+            return base_response(BaseHttpResponse(401, "Account Not Activated", "لم يتم تفعيل الحساب"))
+            # Account Not Activated
+        elif self.is_suspended:
+            return base_response(BaseHttpResponse(401, "Account Suspended", "الحساب معلق"))
+            # Account Is Suspended
+        elif self.is_deleted:
+            return base_response(
+                BaseHttpResponse(401, "Account Has Deleted From Our Servers", "تم حذف الحساب من النظام"))
+            # Account Is Deleted From Our Servers
 
 
 class Department(BaseModel):

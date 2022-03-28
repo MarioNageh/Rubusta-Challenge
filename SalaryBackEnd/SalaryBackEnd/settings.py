@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,10 +43,10 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Salary.middleware.authMiddleware.AuthMiddleWear',
 ]
 
 ROOT_URLCONF = 'SalaryBackEnd.urls'
@@ -133,3 +134,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SECRET_KEY_AUTH = 'MarioRubustaMarios'  # JSON WEB TOKEN SECURITY KEY
 TIME_OF_RE_SYNC = 60 * 60 * 720  # 30 Days
+
+
+# Application definition
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8080",
+    "http://127.0.0.1:8081",
+    "http://localhost:8081",
+]
+APPEND_SLASH = False
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
