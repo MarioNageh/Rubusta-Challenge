@@ -14,7 +14,6 @@ until Build the Fornt Will Hash it and Send it to backend
 
 
 
-
 ## Login
 - Method: POST
 
@@ -71,6 +70,73 @@ until Build the Fornt Will Hash it and Send it to backend
     "MessageAr": "عفوا يوجد خطا في اسم المستخدم او كلمة السر"
 }
     ```
+
+
+
+## Salary
+- Method: GET
+
+- URI
+
+  > /salary/
+- example /salary/?month=12a&year=2022
+- Parameters Url Params
+
+  | Field      | Type   | Description                   |
+  | ---------- | ------ | ----------------------------- |
+  | month      | String | A Month Number As 6              |
+  | year       | String | A Year Number As 2022  |
+ 
+- Response
+
+  - Success
+
+    | Field   | Type    | Description                |
+    | ------- | ------- | -------------------------- |
+    | code      | String  | Response code              |
+    | MessageEn | String  | Response message           |
+    | MessageAr | String  | Response message            |
+    | Month    | String | Month   |
+    | Salaries_payment_day    | String | Salaries_payment_day  |
+    | Bonus_payment_day    | String | Bonus_payment_day  |
+    | Salaries_total    | String | Salaries_total  |
+    | Bonus_total    | String | Bonus_total  |
+    | Payments_total    | String | Payments_total  |
+
+    Example
+  
+    ```{
+    "Code": 200,
+    "MessageEn": "Successful Generated Report",
+    "MessageAr": "تم نجهيز التقرير بنجاح",
+    "Month": "June",
+    "Salaries_payment_day": "30",
+    "Bonus_payment_day": "15",
+    "Salaries_total": "$10030.0",
+    "Bonus_total": "$1003.0",
+    "Payments_total": "$11033.0"
+}
+    ```
+  
+
+  
+  - Failed
+  
+    | Field   | Type    | Description                |
+    | ------- | ------- | -------------------------- |
+    | code      | String  | Response code              |
+    | MessageEn | String  | Response message           |
+    | MessageAr | String  | Response message            |
+  
+    Example
+  
+    ```{
+    "Code": 403,
+    "MessageEn": "You Must Pass Invalid Month,Year",
+    "MessageAr": "يجب ان يكون الشهر و السنة صحيح"
+}
+    ```
+    
 
 
 
