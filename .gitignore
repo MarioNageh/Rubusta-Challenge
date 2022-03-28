@@ -2,11 +2,6 @@
 *__pycache__
 *.zip
 *.rar
-ChatImages
-Photos
-Sounds
-PostImages
-StoryVideo
-StoryImages
+env
 saloonApp/utils/__pycache__/
 __pycache__/
