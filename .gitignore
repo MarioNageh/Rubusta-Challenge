@@ -1,0 +1,12 @@
+*.idea
+*__pycache__
+*.zip
+*.rar
+ChatImages
+Photos
+Sounds
+PostImages
+StoryVideo
+StoryImages
+saloonApp/utils/__pycache__/
+__pycache__/
