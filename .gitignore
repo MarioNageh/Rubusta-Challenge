@@ -5,3 +5,4 @@
 env
 saloonApp/utils/__pycache__/
 __pycache__/
+SalaryBackEnd/db.sqlite3
