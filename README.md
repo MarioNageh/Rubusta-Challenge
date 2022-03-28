@@ -1,9 +1,18 @@
-[TOC]
 # Rubusta Challenge
+# Setup run this commads
+> -> python -m venv env 
+->  activae the env
+-> pip install -r req.txt
+-> here in setting file there two Connection To DataBase mysql,SqlLite , if you need mysql un comment code and  fill your credential 
+-> python manage.py makemigrations
+-> python manage.py migrate
+
+# For Testing 
+> python manage.py test
 
 # First You go to
-> InitData/init_data.py
-# Run This Script To Insert First Admin
+>  InitData/init_data.py
+# Run This Script To Insert First Admin and create 5 employee if you need real test
 > Admin@Rubusta.com 
 > 1234
 # I Have Attach Postman Collection

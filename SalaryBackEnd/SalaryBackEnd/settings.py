@@ -72,23 +72,23 @@ WSGI_APPLICATION = 'SalaryBackEnd.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# Testing In Mysql Server
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.mysql",
-        'NAME': 'rubusta',
-        'USER': 'root',
-        'PASSWORD': 'Mario123!@#',
-        'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# Testing In Mysql Server
+# DATABASES = {
+#     'default': {
+#         "ENGINE": "django.db.backends.mysql",
+#         'NAME': 'rubusta',
+#         'USER': 'root',
+#         'PASSWORD': 'Mario123!@#',
+#         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation

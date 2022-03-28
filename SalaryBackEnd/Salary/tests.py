@@ -4,7 +4,7 @@ from Salary.models import Admins
 from Salary.utils.authUtils import hashSha1
 
 
-class AnimalTestCase(TestCase):
+class RubustaTestCase(TestCase):
     def setUp(self):
         Admins.objects.create(firstName="Rubusta", lastName="Admin", email="Admin@Rubusta.com",
                               password=hashSha1("1234")
