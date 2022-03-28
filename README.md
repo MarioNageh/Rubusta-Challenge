@@ -10,6 +10,9 @@
 # For Testing 
 > python manage.py test
 
+# For Run Server 
+> python manage.py runserver
+
 # First You go to
 >  InitData/init_data.py
 # Run This Script To Insert First Admin and create 5 employee if you need real test
